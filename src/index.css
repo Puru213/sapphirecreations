@@ -83,6 +83,28 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+  }
 }
 
 @import url('https://rsms.me/inter/inter.css');
@@ -141,7 +163,7 @@
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-slate-800/40 dark:border-slate-700/50;
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-slate-800/40 dark:border-slate-700/50 light:bg-slate-100/60 light:border-slate-200/60;
 }
 
 .scrollbar-hidden {
@@ -218,4 +240,67 @@
 
 .animate-meteor-effect {
   animation: meteor linear forwards;
+}
+
+/* Timeline glowing effect */
+.timeline-line {
+  @apply relative;
+}
+
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.6), rgba(59, 130, 246, 0.2));
+  transform: translateX(-50%);
+  z-index: -1;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+/* Light mode specific styles */
+.light .bg-black {
+  @apply bg-white;
+}
+
+.light .text-white {
+  @apply text-gray-900;
+}
+
+.light .text-white\/80 {
+  @apply text-gray-700;
+}
+
+.light .text-white\/70 {
+  @apply text-gray-600;
+}
+
+.light .text-white\/50 {
+  @apply text-gray-500;
+}
+
+.light .border-white\/20 {
+  @apply border-gray-200;
+}
+
+.light .border-white\/10 {
+  @apply border-gray-100;
+}
+
+.light .bg-white\/10 {
+  @apply bg-gray-100;
+}
+
+.light .bg-white\/20 {
+  @apply bg-gray-200;
+}
+
+.light .bg-black\/80 {
+  @apply bg-white/80;
+}
+
+.light .bg-black\/95 {
+  @apply bg-white/95;
 }

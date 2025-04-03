@@ -36,9 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
     {
       title: "Contact",
       links: [
-        { name: "Get a Quote", href: "#contact" },
-        { name: "Privacy Policy", href: "/privacy-policy" },
-        { name: "Terms", href: "/terms" }
+        { name: "Get a Quote", href: "#contact" }
       ]
     }
   ];
@@ -65,8 +63,8 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
   };
 
   return (
-    <footer className={cn("bg-black dark:bg-slate-900 text-white pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+    <footer className={cn("bg-black dark:bg-slate-900 light:bg-slate-100 text-white dark:text-white light:text-gray-800 pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 dark:via-white/20 light:via-gray-300 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -75,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               <Link to="/" className="inline-block mb-4">
                 <Logo size="md" />
               </Link>
-              <p className="text-white/70 mb-6 max-w-md text-sm">
+              <p className="text-white/70 dark:text-white/70 light:text-gray-600 mb-6 max-w-md text-sm">
                 Sapphire Creations is a full-service marketing and design agency specializing in brand identity,
                 digital marketing, and creative content development to help brands stand out in today's
                 competitive market.
@@ -90,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                   <a 
                     key={social.name}
                     href="https://example.com" 
-                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                    className="w-8 h-8 rounded-full bg-white/10 dark:bg-white/10 light:bg-gray-200 flex items-center justify-center hover:bg-white/20 dark:hover:bg-white/20 light:hover:bg-gray-300 transition-colors"
                     aria-label={`Follow us on ${social.name}`}
                   >
                     {social.icon}
@@ -103,14 +101,14 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           {footerLinks.map((column, index) => (
             <FadeIn key={column.title} delay={index * 100}>
               <div>
-                <h3 className="text-white font-medium mb-3 text-sm">{column.title}</h3>
+                <h3 className="text-white dark:text-white light:text-gray-800 font-medium mb-3 text-sm">{column.title}</h3>
                 <ul className="space-y-2">
                   {index === 0 ? (
                     (column.links as Array<{ name: string; serviceId: number }>).map((link) => (
                       <li key={link.name}>
                         <a 
                           href="#services" 
-                          className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm"
+                          className="text-white/70 dark:text-white/70 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-gray-900 transition-colors text-xs sm:text-sm"
                           onClick={(e) => {
                             e.preventDefault();
                             handleServiceClick(link.serviceId);
@@ -124,11 +122,11 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                     (column.links as Array<{ name: string; href: string }>).map((link) => (
                       <li key={link.name}>
                         {link.href.startsWith("/") ? (
-                          <Link to={link.href} className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
+                          <Link to={link.href} className="text-white/70 dark:text-white/70 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-gray-900 transition-colors text-xs sm:text-sm">
                             {link.name}
                           </Link>
                         ) : (
-                          <a href={link.href} className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
+                          <a href={link.href} className="text-white/70 dark:text-white/70 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-gray-900 transition-colors text-xs sm:text-sm">
                             {link.name}
                           </a>
                         )}
@@ -141,21 +139,21 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           ))}
         </div>
         
-        <div className="mt-12 pt-6 border-t border-white/10">
+        <div className="mt-12 pt-6 border-t border-white/10 dark:border-white/10 light:border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white/50 text-xs mb-4 md:mb-0">
+            <p className="text-white/50 dark:text-white/50 light:text-gray-500 text-xs mb-4 md:mb-0">
               © {currentYear} Sapphire Creations. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <Link to="/privacy-policy" className="text-white/50 hover:text-white text-xs transition-colors">
+              <Link to="/privacy-policy" className="text-white/50 dark:text-white/50 light:text-gray-500 hover:text-white dark:hover:text-white light:hover:text-gray-900 text-xs transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-white/50 hover:text-white text-xs transition-colors">
+              <Link to="/terms" className="text-white/50 dark:text-white/50 light:text-gray-500 hover:text-white dark:hover:text-white light:hover:text-gray-900 text-xs transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/#contact" className="text-white/50 hover:text-white text-xs transition-colors">
+              <a href="#contact" className="text-white/50 dark:text-white/50 light:text-gray-500 hover:text-white dark:hover:text-white light:hover:text-gray-900 text-xs transition-colors">
                 Contact Us
-              </Link>
+              </a>
             </div>
           </div>
         </div>
