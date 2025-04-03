@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
             Get Quote
           </button>
           <button 
-            className="px-3 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white dark:text-white light:text-gray-900 rounded-full text-xs font-medium transition-all duration-200"
+            className="px-3 py-1.5 bg-mint-500 hover:bg-mint-600 text-white rounded-full text-xs font-medium transition-all duration-200 light:bg-mint-600 light:hover:bg-mint-700"
             onClick={() => scrollToSection('contact')}
           >
             Contact Us
@@ -159,13 +159,13 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
           ))}
           <div className="pt-4 flex flex-col space-y-3 w-full">
             <button 
-              className="px-4 py-2 text-white/90 dark:text-white/90 light:text-gray-700 hover:text-white dark:hover:text-white light:hover:text-gray-900 transition-colors text-sm font-medium border border-white/20 rounded-lg"
+              className="px-4 py-2 text-white/90 dark:text-white/90 light:text-gray-700 hover:text-white dark:hover:text-white light:hover:text-gray-900 transition-colors text-sm font-medium border border-white/20 light:border-mint-200 rounded-lg"
               onClick={() => scrollToSection('contact')}
             >
               Get Quote
             </button>
             <button 
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg text-sm font-medium transition-all duration-200"
+              className="px-4 py-2 bg-mint-500 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:bg-mint-600"
               onClick={() => scrollToSection('contact')}
             >
               Contact Us

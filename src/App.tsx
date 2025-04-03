@@ -11,9 +11,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./hooks/use-theme";
+import { ScrollToTop } from "./components/ui/scroll-to-top";
 
 // Component to handle scrolling to top on page change
-const ScrollToTop = () => {
+const RouteChangeHandler = () => {
   const { pathname } = useLocation();
   
   React.useEffect(() => {
@@ -32,7 +33,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <ScrollToTop />
+          <RouteChangeHandler />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/faqs" element={<FAQs />} />
@@ -41,6 +42,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ScrollToTop />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

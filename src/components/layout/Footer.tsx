@@ -30,12 +30,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
         { name: "Our Work", href: "#portfolio" },
         { name: "Process", href: "#process" },
         { name: "Team", href: "#about" },
-        { name: "FAQs", href: "/faqs" }
-      ]
-    },
-    {
-      title: "Contact",
-      links: [
         { name: "Get a Quote", href: "#contact" }
       ]
     }
@@ -63,12 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
   };
 
   return (
-    <footer className={cn("bg-black dark:bg-slate-900 light:bg-slate-100 text-white dark:text-white light:text-gray-800 pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 dark:via-white/20 light:via-gray-300 to-transparent"></div>
+    <footer className={cn("bg-black dark:bg-slate-900 light:bg-white text-white dark:text-white light:text-gray-800 pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 dark:via-white/20 light:via-mint-200 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <FadeIn className="col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <FadeIn className="col-span-1 md:col-span-1">
             <div>
               <Link to="/" className="inline-block mb-4">
                 <Logo size="md" />
@@ -88,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                   <a 
                     key={social.name}
                     href="https://example.com" 
-                    className="w-8 h-8 rounded-full bg-white/10 dark:bg-white/10 light:bg-gray-200 flex items-center justify-center hover:bg-white/20 dark:hover:bg-white/20 light:hover:bg-gray-300 transition-colors"
+                    className="w-8 h-8 rounded-full bg-white/10 dark:bg-white/10 light:bg-mint-100 flex items-center justify-center hover:bg-white/20 dark:hover:bg-white/20 light:hover:bg-mint-200 transition-colors"
                     aria-label={`Follow us on ${social.name}`}
                   >
                     {social.icon}
@@ -139,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           ))}
         </div>
         
-        <div className="mt-12 pt-6 border-t border-white/10 dark:border-white/10 light:border-gray-200">
+        <div className="mt-12 pt-6 border-t border-white/10 dark:border-white/10 light:border-mint-100">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-white/50 dark:text-white/50 light:text-gray-500 text-xs mb-4 md:mb-0">
               © {currentYear} Sapphire Creations. All rights reserved.
@@ -151,9 +145,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               <Link to="/terms" className="text-white/50 dark:text-white/50 light:text-gray-500 hover:text-white dark:hover:text-white light:hover:text-gray-900 text-xs transition-colors">
                 Terms of Service
               </Link>
-              <a href="#contact" className="text-white/50 dark:text-white/50 light:text-gray-500 hover:text-white dark:hover:text-white light:hover:text-gray-900 text-xs transition-colors">
-                Contact Us
-              </a>
             </div>
           </div>
         </div>

@@ -11,6 +11,20 @@ interface ProductIntroProps {
 }
 
 export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => {
+  const scrollToProcess = () => {
+    const processSection = document.getElementById('process');
+    if (processSection) {
+      const headerOffset = 80;
+      const elementPosition = processSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div id={id} className={cn("py-24 px-6 md:px-10 relative overflow-hidden bg-black", className)}>
       {/* Background elements */}
@@ -51,7 +65,10 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
               </ul>
               
               <FadeIn duration={1000}>
-                <button className="px-6 py-3 bg-white text-black rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <button 
+                  onClick={scrollToProcess}
+                  className="px-6 py-3 bg-white text-black rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
                   Want to see how we work?
                 </button>
               </FadeIn>

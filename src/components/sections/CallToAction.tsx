@@ -1,7 +1,6 @@
 
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
-import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from '@/components/ui/button';
@@ -97,6 +96,20 @@ export const CTASection: React.FC<CTASectionProps> = ({
     }
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id={id} className={cn("py-24 px-6 md:px-10 bg-black relative overflow-hidden", className)}>
       {/* Background elements */}
@@ -123,7 +136,8 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 </p>
                 
                 <Button 
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02] mt-auto mx-auto"
+                  className="px-8 py-3 bg-gradient-to-r from-mint-500 to-mint-600 hover:from-mint-600 hover:to-mint-700 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02] mt-auto mx-auto"
+                  onClick={scrollToContact}
                 >
                   Get Quote
                 </Button>
@@ -133,7 +147,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
           
           <div>
             <FadeIn direction="up">
-              <div className="text-sm font-medium text-blue-400 mb-3 tracking-wider">CONTACT US</div>
+              <div className="text-sm font-medium text-mint-400 mb-3 tracking-wider light:text-mint-600">CONTACT US</div>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
                 Ready to Elevate Your Brand?
               </h2>
@@ -151,7 +165,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     <input 
                       type="text" 
                       id="name" 
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-mint-500 focus:outline-none focus:ring-1 focus:ring-mint-500 transition-colors light:bg-mint-50 light:text-gray-900 light:border-mint-200 light:focus:border-mint-500" 
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={handleChange}
@@ -162,7 +176,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     <input 
                       type="email" 
                       id="email" 
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-mint-500 focus:outline-none focus:ring-1 focus:ring-mint-500 transition-colors light:bg-mint-50 light:text-gray-900 light:border-mint-200 light:focus:border-mint-500" 
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={handleChange}
@@ -174,16 +188,16 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   <label htmlFor="service" className="text-white/80 text-sm">Service Interested In</label>
                   <select 
                     id="service" 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors appearance-none" 
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-mint-500 focus:outline-none focus:ring-1 focus:ring-mint-500 transition-colors appearance-none light:bg-mint-50 light:text-gray-900 light:border-mint-200 light:focus:border-mint-500" 
                     value={formData.service}
                     onChange={handleChange}
                   >
-                    <option value="" disabled className="bg-gray-900">Select a service</option>
-                    <option value="branding" className="bg-gray-900">Brand Design</option>
-                    <option value="social" className="bg-gray-900">Social Media Content</option>
-                    <option value="video" className="bg-gray-900">Video Production</option>
-                    <option value="print" className="bg-gray-900">Print Design</option>
-                    <option value="digital" className="bg-gray-900">Digital Design</option>
+                    <option value="" disabled className="bg-gray-900 light:bg-white">Select a service</option>
+                    <option value="branding" className="bg-gray-900 light:bg-white">Brand Design</option>
+                    <option value="social" className="bg-gray-900 light:bg-white">Social Media Content</option>
+                    <option value="video" className="bg-gray-900 light:bg-white">Video Production</option>
+                    <option value="print" className="bg-gray-900 light:bg-white">Print Design</option>
+                    <option value="digital" className="bg-gray-900 light:bg-white">Digital Design</option>
                   </select>
                 </div>
                 
@@ -192,7 +206,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   <textarea 
                     id="message" 
                     rows={4} 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-mint-500 focus:outline-none focus:ring-1 focus:ring-mint-500 transition-colors light:bg-mint-50 light:text-gray-900 light:border-mint-200 light:focus:border-mint-500" 
                     placeholder="Tell us about your project..."
                     value={formData.message}
                     onChange={handleChange}
@@ -203,7 +217,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    className="w-full bg-gradient-to-r from-mint-500 to-mint-600 hover:from-mint-600 hover:to-mint-700 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-mint-500 focus:ring-opacity-50"
                   >
                     {isSubmitting ? "Sending..." : "Get Started"}
                   </button>

@@ -162,7 +162,7 @@
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-slate-800/40 dark:border-slate-700/50 light:bg-slate-100 light:bg-opacity-60 light:border-slate-200/60;
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-slate-800/40 dark:border-slate-700/50 light:bg-mint-100 light:bg-opacity-60 light:border-mint-200/60;
 }
 
 .scrollbar-hidden {
@@ -242,21 +242,29 @@
 }
 
 /* Timeline glowing effect */
-.timeline-line {
-  @apply relative;
+.timeline-container {
+  z-index: 1;
+  position: relative;
 }
 
-.timeline-line::before {
+.timeline-line {
+  overflow: hidden;
+  border-radius: 9999px;
+}
+
+.timeline-line::after {
   content: '';
   position: absolute;
-  left: 50%;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.6), rgba(59, 130, 246, 0.2));
-  transform: translateX(-50%);
-  z-index: -1;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 15px 2px rgba(59, 130, 246, 0.7), 0 0 5px 1px rgba(59, 130, 246, 1); 
+  z-index: 0;
+}
+
+.light .timeline-line::after {
+  box-shadow: 0 0 15px 2px rgba(20, 184, 166, 0.7), 0 0 5px 1px rgba(20, 184, 166, 1);
 }
 
 /* Light mode specific styles */
@@ -302,4 +310,77 @@
 
 .light .bg-black\/95 {
   @apply bg-white/95;
+}
+
+/* Mint color utilities */
+.light .bg-mint-100 {
+  @apply bg-mint-100;
+}
+
+.light .text-mint-100 {
+  @apply text-mint-100;
+}
+
+.light .bg-mint-200 {
+  @apply bg-mint-200;
+}
+
+.light .text-mint-200 {
+  @apply text-mint-200;
+}
+
+.light .bg-mint-300 {
+  @apply bg-mint-300;
+}
+
+.light .text-mint-300 {
+  @apply text-mint-300;
+}
+
+.light .bg-mint-400 {
+  @apply bg-mint-400;
+}
+
+.light .text-mint-400 {
+  @apply text-mint-400;
+}
+
+.light .bg-mint-500 {
+  @apply bg-mint-500;
+}
+
+.light .text-mint-500 {
+  @apply text-mint-500;
+}
+
+.light .bg-mint-600 {
+  @apply bg-mint-600;
+}
+
+.light .text-mint-600 {
+  @apply text-mint-600;
+}
+
+.light .bg-mint-700 {
+  @apply bg-mint-700;
+}
+
+.light .text-mint-700 {
+  @apply text-mint-700;
+}
+
+.light .bg-mint-800 {
+  @apply bg-mint-800;
+}
+
+.light .text-mint-800 {
+  @apply text-mint-800;
+}
+
+.light .bg-mint-900 {
+  @apply bg-mint-900;
+}
+
+.light .text-mint-900 {
+  @apply text-mint-900;
 }
