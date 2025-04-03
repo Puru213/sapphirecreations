@@ -6,6 +6,7 @@ type Theme = 'light' | 'dark';
 interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -24,6 +25,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return 'dark'; // Default fallback
   });
 
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+
   useEffect(() => {
     // Update localStorage
     localStorage.setItem('theme', theme);
@@ -40,10 +45,23 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Add data-theme attribute for better accessibility and styling
     document.documentElement.setAttribute('data-theme', theme);
+    
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      const newTheme = e.matches ? 'dark' : 'light';
+      if (localStorage.getItem('theme') === null) {
+        // Only auto-update if user hasn't explicitly set a preference
+        setTheme(newTheme);
+      }
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

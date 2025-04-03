@@ -1,4 +1,3 @@
-
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
@@ -14,7 +13,7 @@ interface CTASectionProps {
 export const CTASection: React.FC<CTASectionProps> = ({ 
   className, 
   id,
-  emailTo = "support@yourdomain.com" // Default email to send form submissions to
+  emailTo = "utkarsh.yadav5029@gmail.com" // Updated default email
 }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({

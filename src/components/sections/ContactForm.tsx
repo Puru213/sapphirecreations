@@ -27,7 +27,7 @@ interface ContactFormProps {
 export const ContactForm: React.FC<ContactFormProps> = ({ 
   open, 
   onOpenChange,
-  emailTo = "youremail@example.com", // Default fallback email
+  emailTo = "utkarsh.yadav5029@gmail.com", // Updated default email
 }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);

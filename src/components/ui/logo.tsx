@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '@/hooks/use-theme';
 
 interface LogoProps {
   className?: string;
@@ -16,6 +17,9 @@ export const Logo: React.FC<LogoProps> = ({
   variant = 'default',
   linkToHome = true
 }) => {
+  const { theme } = useTheme();
+  const location = useLocation();
+  
   const sizes = {
     sm: 'text-xs md:text-sm',
     md: 'text-sm md:text-base',
@@ -30,12 +34,22 @@ export const Logo: React.FC<LogoProps> = ({
     )}>
       {variant === 'default' && (
         <div className="absolute inset-0 -z-10 opacity-30">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-lg"></div>
+          <div className={cn(
+            "absolute inset-0 rounded-full blur-lg",
+            theme === 'light' 
+              ? "bg-gradient-to-r from-mint-500/10 to-mint-600/10" 
+              : "bg-gradient-to-r from-blue-500/10 to-indigo-500/10"
+          )}></div>
         </div>
       )}
       
       <div className="flex flex-col items-center">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">
+        <span className={cn(
+          "bg-clip-text text-transparent",
+          theme === 'light' 
+            ? "bg-gradient-to-r from-mint-500 to-mint-600" 
+            : "bg-gradient-to-r from-blue-400 to-indigo-400"
+        )}>
           Sapphire
         </span>
         <span className="text-white text-opacity-80 -mt-1 text-[0.65em]">

@@ -168,7 +168,8 @@
 
 /* Add specific overrides for dark and light modes without circular references */
 .dark .glass {
-  @apply bg-slate-800/40 border-slate-700/50;
+  background-color: rgba(30, 41, 59, 0.4); /* slate-800 at 40% opacity */
+  border-color: rgba(51, 65, 85, 0.5); /* slate-700 at 50% opacity */
 }
 
 .light .glass {
@@ -229,8 +230,16 @@
   @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400;
 }
 
+.light .sapphire-gradient-text {
+  background-image: linear-gradient(to right, #14B8A6, #0D9488); /* mint-500 to mint-600 */
+}
+
 .sapphire-glow {
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.light .sapphire-glow {
+  box-shadow: 0 0 30px rgba(20, 184, 166, 0.3); /* mint-500 */
 }
 
 /* Meteor animation */
@@ -323,7 +332,7 @@
   background-color: rgba(255, 255, 255, 0.95); /* bg-white/95 */
 }
 
-/* Replace all the mint color utilities with direct color values */
+/* Mint color direct values for light mode */
 .light-mint-bg-100 {
   background-color: #CCFBF1; /* mint-100 */
 }
@@ -394,4 +403,44 @@
 
 .light-mint-text-900 {
   color: #134E4A; /* mint-900 */
+}
+
+/* Form input field improvements */
+input:focus, 
+textarea:focus, 
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3);
+}
+
+/* Improve form accessibility */
+.light input, 
+.light textarea, 
+.light select {
+  background-color: rgba(204, 251, 241, 0.2);
+  border-color: rgba(153, 246, 228, 0.3);
+}
+
+/* Improved scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-radius: 20px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background-color: rgba(20, 184, 166, 0.3);
+}
+
+/* Ensure elements with absolute positioning respect boundaries */
+.relative {
+  position: relative;
 }
