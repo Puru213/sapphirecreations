@@ -1,17 +1,20 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'default' | 'minimal';
+  linkToHome?: boolean;
 }
 
 export const Logo: React.FC<LogoProps> = ({ 
   className, 
   size = 'md',
-  variant = 'default'
+  variant = 'default',
+  linkToHome = true
 }) => {
   const sizes = {
     sm: 'text-xs md:text-sm',
@@ -19,7 +22,7 @@ export const Logo: React.FC<LogoProps> = ({
     lg: 'text-base md:text-lg'
   };
 
-  return (
+  const logoContent = (
     <div className={cn(
       "flex items-center font-display font-bold relative", 
       sizes[size],
@@ -45,4 +48,14 @@ export const Logo: React.FC<LogoProps> = ({
       </div>
     </div>
   );
+
+  if (linkToHome) {
+    return (
+      <Link to="/" className="inline-block">
+        {logoContent}
+      </Link>
+    );
+  }
+
+  return logoContent;
 };
