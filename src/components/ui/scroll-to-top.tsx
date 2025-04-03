@@ -1,9 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useTheme } from '@/hooks/use-theme';
 
 export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { theme } = useTheme();
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -30,9 +33,11 @@ export const ScrollToTop = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`${
+      className={cn(
+        "fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-500 text-white shadow-lg transition-all duration-300 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400",
+        theme === 'light' ? "bg-mint-500 hover:bg-mint-600 focus:ring-mint-400" : "",
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      } fixed bottom-6 right-6 z-50 p-3 rounded-full bg-mint-500 text-white shadow-lg transition-all duration-300 hover:bg-mint-600 focus:outline-none focus:ring-2 focus:ring-mint-400 light:bg-mint-600 light:hover:bg-mint-700`}
+      )}
       aria-label="Scroll to top"
     >
       <ChevronUp className="h-5 w-5" />

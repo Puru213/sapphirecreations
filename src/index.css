@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -162,7 +163,17 @@
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg dark:bg-slate-800/40 dark:border-slate-700/50 light:bg-mint-100 light:bg-opacity-60 light:border-mint-200/60;
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+}
+
+/* Add specific overrides for dark and light modes without circular references */
+.dark .glass {
+  @apply bg-slate-800/40 border-slate-700/50;
+}
+
+.light .glass {
+  background-color: rgba(204, 251, 241, 0.6); /* mint-100 at 60% opacity */
+  border-color: rgba(153, 246, 228, 0.6); /* mint-200 at 60% opacity */
 }
 
 .scrollbar-hidden {
@@ -269,118 +280,118 @@
 
 /* Light mode specific styles */
 .light .bg-black {
-  @apply bg-white;
+  background-color: white;
 }
 
 .light .text-white {
-  @apply text-gray-900;
+  color: #111827; /* text-gray-900 */
 }
 
 .light .text-white\/80 {
-  @apply text-gray-700;
+  color: #374151; /* text-gray-700 */
 }
 
 .light .text-white\/70 {
-  @apply text-gray-600;
+  color: #4B5563; /* text-gray-600 */
 }
 
 .light .text-white\/50 {
-  @apply text-gray-500;
+  color: #6B7280; /* text-gray-500 */
 }
 
 .light .border-white\/20 {
-  @apply border-gray-200;
+  border-color: #E5E7EB; /* border-gray-200 */
 }
 
 .light .border-white\/10 {
-  @apply border-gray-100;
+  border-color: #F3F4F6; /* border-gray-100 */
 }
 
 .light .bg-white\/10 {
-  @apply bg-gray-100;
+  background-color: #F3F4F6; /* bg-gray-100 */
 }
 
 .light .bg-white\/20 {
-  @apply bg-gray-200;
+  background-color: #E5E7EB; /* bg-gray-200 */
 }
 
 .light .bg-black\/80 {
-  @apply bg-white/80;
+  background-color: rgba(255, 255, 255, 0.8); /* bg-white/80 */
 }
 
 .light .bg-black\/95 {
-  @apply bg-white/95;
+  background-color: rgba(255, 255, 255, 0.95); /* bg-white/95 */
 }
 
-/* Mint color utilities */
-.light .bg-mint-100 {
-  @apply bg-mint-100;
+/* Replace all the mint color utilities with direct color values */
+.light-mint-bg-100 {
+  background-color: #CCFBF1; /* mint-100 */
 }
 
-.light .text-mint-100 {
-  @apply text-mint-100;
+.light-mint-text-100 {
+  color: #CCFBF1; /* mint-100 */
 }
 
-.light .bg-mint-200 {
-  @apply bg-mint-200;
+.light-mint-bg-200 {
+  background-color: #99F6E4; /* mint-200 */
 }
 
-.light .text-mint-200 {
-  @apply text-mint-200;
+.light-mint-text-200 {
+  color: #99F6E4; /* mint-200 */
 }
 
-.light .bg-mint-300 {
-  @apply bg-mint-300;
+.light-mint-bg-300 {
+  background-color: #5EEAD4; /* mint-300 */
 }
 
-.light .text-mint-300 {
-  @apply text-mint-300;
+.light-mint-text-300 {
+  color: #5EEAD4; /* mint-300 */
 }
 
-.light .bg-mint-400 {
-  @apply bg-mint-400;
+.light-mint-bg-400 {
+  background-color: #2DD4BF; /* mint-400 */
 }
 
-.light .text-mint-400 {
-  @apply text-mint-400;
+.light-mint-text-400 {
+  color: #2DD4BF; /* mint-400 */
 }
 
-.light .bg-mint-500 {
-  @apply bg-mint-500;
+.light-mint-bg-500 {
+  background-color: #14B8A6; /* mint-500 */
 }
 
-.light .text-mint-500 {
-  @apply text-mint-500;
+.light-mint-text-500 {
+  color: #14B8A6; /* mint-500 */
 }
 
-.light .bg-mint-600 {
-  @apply bg-mint-600;
+.light-mint-bg-600 {
+  background-color: #0D9488; /* mint-600 */
 }
 
-.light .text-mint-600 {
-  @apply text-mint-600;
+.light-mint-text-600 {
+  color: #0D9488; /* mint-600 */
 }
 
-.light .bg-mint-700 {
-  @apply bg-mint-700;
+.light-mint-bg-700 {
+  background-color: #0F766E; /* mint-700 */
 }
 
-.light .text-mint-700 {
-  @apply text-mint-700;
+.light-mint-text-700 {
+  color: #0F766E; /* mint-700 */
 }
 
-.light .bg-mint-800 {
-  @apply bg-mint-800;
+.light-mint-bg-800 {
+  background-color: #115E59; /* mint-800 */
 }
 
-.light .text-mint-800 {
-  @apply text-mint-800;
+.light-mint-text-800 {
+  color: #115E59; /* mint-800 */
 }
 
-.light .bg-mint-900 {
-  @apply bg-mint-900;
+.light-mint-bg-900 {
+  background-color: #134E4A; /* mint-900 */
 }
 
-.light .text-mint-900 {
-  @apply text-mint-900;
+.light-mint-text-900 {
+  color: #134E4A; /* mint-900 */
 }
