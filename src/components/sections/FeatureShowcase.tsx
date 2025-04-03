@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
@@ -108,16 +109,6 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
       )
     },
     {
-      id: 7,
-      title: "Content Marketing",
-      description: "Blogs, copies, and creative content that captivate. Because \"lorem ipsum\" is not a content strategy.",
-      icon: (
-        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
-          <PenTool className="h-5 w-5 text-white" />
-        </div>
-      )
-    },
-    {
       id: 8,
       title: "SEO & Search Marketing",
       description: "Rank higher, drive traffic, and increase visibility. We speak fluent Google so your brand gets the attention it deserves.",
@@ -159,13 +150,13 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
     }
   ];
 
-  // We'll create three rows with 4-4-3 distribution
+  // Recalculate the distribution for better alignment - 10 items total now
   const servicesRow1 = services.slice(0, 4);
   const servicesRow2 = services.slice(4, 8);
   const servicesRow3 = services.slice(8);
 
   return (
-    <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950 dark:from-slate-950 dark:to-slate-900", className)}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <FadeIn direction="up">
@@ -283,7 +274,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </div>
             
             {/* Third row of services */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {servicesRow3.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={(service.id - 8) * 50}>
                   <div 

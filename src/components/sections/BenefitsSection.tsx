@@ -10,6 +10,7 @@ interface Benefit {
   description: string;
   value: string;
   countTo: number;
+  countPrecision?: number;
   prefix?: string;
   suffix?: string;
   metric: string;
@@ -25,12 +26,14 @@ const CountUpNumber = ({
   end, 
   prefix = "", 
   suffix = "", 
-  duration = 2000 
+  duration = 2000,
+  precision = 0
 }: { 
   end: number; 
   prefix?: string; 
   suffix?: string; 
   duration?: number;
+  precision?: number;
 }) => {
   const [count, setCount] = useState(0);
   const { isVisible, setRef } = useAnimation({ triggerOnce: true });
@@ -44,8 +47,11 @@ const CountUpNumber = ({
     const startAnimation = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const currentCount = Math.floor(progress * end);
       
+      // Calculate current count with specified precision
+      const currentCount = progress * end;
+      
+      // For decimal precision, set the count with fixed decimals
       setCount(currentCount);
       
       if (progress < 1) {
@@ -58,10 +64,15 @@ const CountUpNumber = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [end, duration, isVisible]);
+  }, [end, duration, isVisible, precision]);
+  
+  // Format the count based on the precision
+  const formattedCount = precision > 0 
+    ? count.toFixed(precision) 
+    : Math.floor(count).toString();
   
   return <div ref={ref => setRef(ref)} className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-    {prefix}{count}{suffix}
+    {prefix}{formattedCount}{suffix}
   </div>;
 };
 
@@ -83,6 +94,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
       description: "Smart strategies, better results because every rupee counts!",
       value: "2.2x",
       countTo: 2.2,
+      countPrecision: 1,
       suffix: "x",
       metric: "return on investment",
       color: "from-purple-500 to-purple-700"
@@ -100,10 +112,10 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
   ];
 
   return (
-    <div id={id} className={cn("py-24 px-6 md:px-10 bg-blue-950 relative overflow-hidden", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 bg-blue-950 dark:bg-slate-900 relative overflow-hidden", className)}>
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-950 to-black/90 z-0"></div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-2xl rounded-full transform -translate-x-1/3 translate-y-1/4"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-950 to-black/90 dark:from-slate-900 dark:to-black/80 z-0"></div>
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 blur-2xl rounded-full transform -translate-x-1/3 translate-y-1/4"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
@@ -140,6 +152,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
                   end={benefit.countTo} 
                   prefix={benefit.prefix || ""} 
                   suffix={benefit.suffix || ""} 
+                  precision={benefit.countPrecision || 0}
                 />
                 <div className="text-white/70 mb-4 text-sm uppercase tracking-wider">
                   {benefit.metric}

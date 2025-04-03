@@ -20,8 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
         { name: "Logo Design", serviceId: 1 },
         { name: "UI/UX Design", serviceId: 3 },
         { name: "Website Design", serviceId: 4 },
-        { name: "Social Media Management", serviceId: 6 },
-        { name: "Content Marketing", serviceId: 7 }
+        { name: "Social Media Management", serviceId: 6 }
       ]
     },
     {
@@ -66,16 +65,16 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
   };
 
   return (
-    <footer className={cn("bg-black text-white pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
+    <footer className={cn("bg-black dark:bg-slate-900 text-white pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <FadeIn className="col-span-2">
             <div>
-              <a href="#" className="inline-block mb-4">
+              <Link to="/" className="inline-block mb-4">
                 <Logo size="md" />
-              </a>
+              </Link>
               <p className="text-white/70 mb-6 max-w-md text-sm">
                 Sapphire Creations is a full-service marketing and design agency specializing in brand identity,
                 digital marketing, and creative content development to help brands stand out in today's
@@ -90,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                 ].map((social) => (
                   <a 
                     key={social.name}
-                    href="#" 
+                    href="https://example.com" 
                     className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
                     aria-label={`Follow us on ${social.name}`}
                   >
@@ -154,9 +153,9 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               <Link to="/terms" className="text-white/50 hover:text-white text-xs transition-colors">
                 Terms of Service
               </Link>
-              <a href="#contact" className="text-white/50 hover:text-white text-xs transition-colors">
+              <Link to="/#contact" className="text-white/50 hover:text-white text-xs transition-colors">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>
